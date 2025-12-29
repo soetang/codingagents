@@ -24,16 +24,6 @@ The system includes two types of agents:
 - **thoughts-locator**: Discovers relevant documents in the thoughts directory
 - **thoughts-analyzer**: Extracts key insights from thought documents
 
-## Usage
-
-Basic usage with OpenCode CLI:
-
-```bash
-# Use the OpenCode CLI commands
-opencode research "your topic"
-opencode analyze "code pattern"
-```
-
 ## Getting Started
 
 1. Install OpenCode CLI
