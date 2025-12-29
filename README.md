@@ -1,12 +1,14 @@
 # Personal Project using OpenCode CLI
 
-A simple project using the OpenCode CLI for personal use, inspired by HumanLayer agent architecture.
+A simple project using the OpenCode CLI for personal use.
 
 ## Overview
 
-This is a personal project that uses the OpenCode CLI to work with codebases. The agent system is heavily inspired by the HumanLayer framework but adapted for personal use. It's designed to be simple and straightforward.
+This is a personal project that uses the OpenCode CLI to work with codebases. The agents is heavily inspired by the HumanLayer framework but adapted for personal use. However i migth add other approaches in the future.
 
-## Agent System (Inspired by HumanLayer)
+## Humanlayer agents:
+
+Agents/commands from: https://github.com/humanlayer/humanlayer/tree/main/.claude
 
 The system includes two types of agents:
 
