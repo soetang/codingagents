@@ -3,7 +3,7 @@
 description: Document codebase as-is with thoughts directory for historical context
 mode: "primary"
 permission:
-  edit: deny
+  edit: ask
   write: ask  
   bash:
     "git diff": allow
