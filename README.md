@@ -34,7 +34,11 @@ For detailed instructions, see: [https://opencode.ai/](https://opencode.ai/)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is dual-licensed:
+
+- **Overall Project**: MIT License - see the [LICENSE](LICENSE) file for details
+- **HumanLayer-inspired Agent System**: Apache License 2.0 - see the [LICENSE-APACHE](LICENSE-APACHE) file
+- **Skills**: Licensed under MIT unless a specific LICENSE file exists in the skill's folder
 
 ## Note
 
