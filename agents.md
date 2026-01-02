@@ -83,6 +83,8 @@ The pattern matching works as follows:
 
 ## Working with Skills
 
+Skills extend OpenCode's capabilities by providing specialized knowledge, workflows, and tools. Current skills:
+
 Skills are stored in the `skill/` directory. Each skill contains its own documentation and workflow instructions.
 
 To work with skills, read the skill's `SKILL.md` file or explore the `skill_creator` skill for creation workflows.

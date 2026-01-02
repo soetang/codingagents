@@ -53,7 +53,7 @@ To work with skills, read the skill's `SKILL.md` file or explore the `skill_crea
 
 ### Node.js Dependencies
 
-This repo uses minimal npm dependencies for OpenCode plugins.
+This repository uses minimal npm dependencies for OpenCode plugins.
 
 **Install dependencies:**
 ```bash

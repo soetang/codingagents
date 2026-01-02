@@ -1,6 +1,6 @@
 ---
 name: agents-md-generator
-description: Creates agents.md files for repositories containing AI agent workflows, development instructions, and best practices. Use when the user asks to create an agents.md file, set up agent documentation for a repository, or needs repository-specific instructions for AI agents. Supports Python repos (with uv, ruff, mypy, pytest) and can be extended for other tech stacks.
+description: Creates agents.md files for repositories containing AI agent workflows, development instructions, and best practices. Use when the user asks to create an agents.md file, set up agent documentation for a repository, or needs repository-specific instructions for AI agents. Automatically selects appropriate templates based on tech stack (Python, Node.js, Rust, etc.).
 ---
 
 # Agents.md Generator
@@ -28,7 +28,7 @@ Based on the repository type, select the appropriate template from the `referenc
 To see available templates, list the files in `references/` and choose based on their names:
 - Files ending with `_template.md` are base templates for specific tech stacks
 - Files ending with `_example.md` are examples from real repositories
-- Match the filename to your repository type (e.g., `python_template.md` for Python projects, `opencode-config-example.md` for OpenCode configuration repos)
+- Match the filename to your repository type (e.g., `python_template.md` for Python projects, `opencode-config-example.md` for OpenCode configuration repositories)
 
 The template structure should include:
 - Dependency management section
