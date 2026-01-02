@@ -8,9 +8,9 @@ This is a personal project that uses the OpenCode CLI to work with codebases. Th
 
 ### Understanding the System
 
-**Agents** are specialized AI workflows stored as markdown files in the `agent/` directory. They define specific behaviors and capabilities that OpenCode can invoke based on the task at hand. Whether agents operate autonomously depends on the tools and permissions available to them.
+**Agents** are specialized AI workflows stored as markdown files in the `agent/` directory. They define specific behaviors based on the task at hand. Whether agents operate autonomously depends on the tools and permissions available to them.
 
-**Sub-Agents** are agents designed to be invoked by other agents (or the main OpenCode instance) to handle focused subtasks. They provide specialized capabilities that primary agents can leverage.
+**Sub-Agents** are agents designed to be invoked by other agents (or by you) to handle focused subtasks. They provide specialized capabilities that primary agents can leverage.
 
 **Skills** are packaged bundles of instructions, scripts, references, and assets stored in the `skill/` directory. Skills extend OpenCode's capabilities by providing domain-specific knowledge, workflows, and tools. Think of them as "onboarding guides" that transform OpenCode into a specialist for particular tasks.
 
