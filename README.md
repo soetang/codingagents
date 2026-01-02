@@ -36,7 +36,7 @@ The system includes two types of agents:
 
 Skills are modular packages that provide specialized knowledge and workflows:
 
-- **skill_creator**: Complete workflow for creating, validating, and packaging new skills
+- **skill_creator** (from Anthropic): Complete workflow for creating, validating, and packaging new skills
 - **agents-md-generator**: Generates `agents.md` files for repositories with development instructions and best practices
 
 Skills include their own documentation in `SKILL.md` files and may bundle scripts, references, and assets.
