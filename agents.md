@@ -15,17 +15,33 @@ To explore current contents, use standard file navigation tools (ls, glob, read,
 
 ## Working with Agents
 
-### Creating or Updating Agents
+### Agent Types
 
-Agents are markdown files in the `agent/` directory that define specialized behaviors for OpenCode.
+Agents are markdown files with YAML frontmatter that define their mode:
+
+**Primary agents** (`mode: "primary"`):
+- Top-level agents invoked directly by users or the main OpenCode instance
+- Handle complete workflows and complex tasks
+- Examples: research, create-plan, implement_plan, build
+
+**Sub-agents** (`mode: "subagent"`):
+- Specialized agents invoked by other agents to handle focused subtasks
+- Provide specific capabilities that primary agents leverage
+- Examples: codebase-locator, codebase-analyzer, thoughts-locator
+
+### Creating or Updating Agents
 
 When creating or updating agent files:
 
 1. Place markdown files in `agent/` directory
-2. Follow the established structure from existing agents
-3. Include clear instructions for the agent's purpose and workflow
-4. Reference any required tools or dependencies
-5. Document expected inputs and outputs
+2. Add YAML frontmatter with required fields:
+   - `description`: When and how to use the agent
+   - `mode`: Either `"primary"` or `"subagent"`
+   - `permission`: Optional permissions (e.g., `bash: ask`, `edit: deny`)
+3. Follow the established structure from existing agents
+4. Include clear instructions for the agent's purpose and workflow
+5. Reference any required tools or dependencies
+6. Document expected inputs and outputs
 
 ## Working with Skills
 
