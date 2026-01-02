@@ -23,16 +23,14 @@ First, examine the repository to determine the tech stack and tooling:
 
 ### 2. Select Template
 
-Based on the repository type, select the appropriate template:
+Based on the repository type, select the appropriate template from the `references/` directory.
 
-**Python repositories**: Use `references/python_template.md` as the base template. This covers:
-- Dependency management with `uv`
-- Code quality with `ruff` (linting and formatting)
-- Type checking with `mypy`
-- Testing with `pytest`
-- Python-specific style guidelines
+To see available templates, list the files in `references/` and choose based on their names:
+- Files ending with `_template.md` are base templates for specific tech stacks
+- Files ending with `_example.md` are examples from real repositories
+- Match the filename to your repository type (e.g., `python_template.md` for Python projects, `opencode-config-example.md` for OpenCode configuration repos)
 
-**Other repository types**: Adapt the Python template structure to the specific tech stack, maintaining the same organizational pattern:
+The template structure should include:
 - Dependency management section
 - Code quality and formatting section
 - Testing section
@@ -91,29 +89,17 @@ An `agents.md` file should follow this general structure:
 
 ## Templates and Examples
 
-### Python Template
+Templates and examples are available in the `references/` directory. To use them:
 
-For Python repositories, use `references/python_template.md` which includes:
-- `uv` for dependency management
-- `ruff` for linting and formatting
-- `mypy` for type checking
-- `pytest` for testing
-- Google-style docstrings
-- Modern Python type hints
+1. List files in `references/` to see available templates
+2. Choose based on filename:
+   - `*_template.md` files are base templates for specific tech stacks
+   - `*_example.md` files are real-world examples from actual repositories
+3. Read the selected file and customize based on the repository's actual setup
 
-To use: Read `references/python_template.md` and customize based on the repository's actual setup.
-
-### OpenCode Configuration Repository Example
-
-For repositories that are primarily configuration/documentation (like OpenCode config repos), see `references/agents.md` which demonstrates:
-- Working with agent definition files
-- Minimal dependency management (Node.js only)
-- Git workflow and commit conventions
-- Repository organization approach
-- Pointing to existing documentation rather than duplicating it
-- Common tasks without duplicating skill workflows
-
-This example shows how to document a configuration-focused repository while avoiding duplication of information that agents can read directly from other sources (like skill files).
+Common patterns in templates:
+- **Templates** show the tool commands and conventions for a tech stack
+- **Examples** demonstrate how to adapt the structure for specific repository types
 
 ## Best Practices
 
