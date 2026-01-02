@@ -6,6 +6,14 @@ A simple project using the OpenCode CLI for personal use.
 
 This is a personal project that uses the OpenCode CLI to work with codebases. The agents is heavily inspired by the HumanLayer framework but adapted for personal use. However i migth add other approaches in the future.
 
+### Understanding the System
+
+**Agents** are specialized AI workflows stored as markdown files in the `agent/` directory. They define specific behaviors and capabilities that OpenCode can invoke based on the task at hand. Agents operate autonomously to complete complex, multi-step tasks.
+
+**Sub-Agents** are agents designed to be invoked by other agents (or the main OpenCode instance) to handle focused subtasks. They provide specialized capabilities that primary agents can leverage.
+
+**Skills** are packaged bundles of instructions, scripts, references, and assets stored in the `skill/` directory. Skills extend OpenCode's capabilities by providing domain-specific knowledge, workflows, and tools. Think of them as "onboarding guides" that transform OpenCode into a specialist for particular tasks.
+
 ## Humanlayer agents:
 
 Agents/commands from: https://github.com/humanlayer/humanlayer/tree/main/.claude
@@ -23,6 +31,15 @@ The system includes two types of agents:
 - **codebase-pattern-finder**: Finds similar implementations and usage examples
 - **thoughts-locator**: Discovers relevant documents in the thoughts directory
 - **thoughts-analyzer**: Extracts key insights from thought documents
+
+## Skills
+
+Skills are modular packages that provide specialized knowledge and workflows:
+
+- **skill_creator**: Complete workflow for creating, validating, and packaging new skills
+- **agents-md-generator**: Generates `agents.md` files for repositories with development instructions and best practices
+
+Skills include their own documentation in `SKILL.md` files and may bundle scripts, references, and assets.
 
 ## Getting Started
 
