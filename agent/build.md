@@ -4,5 +4,9 @@ mode: "primary"
 permission:
   edit: allow
   write: allow  
-  bash: ask
+  bash:
+    "git status": allow
+    "git diff*": allow
+    "git log*": allow
+    "*": ask
 ---

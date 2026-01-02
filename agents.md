@@ -43,6 +43,44 @@ When creating or updating agent files:
 5. Reference any required tools or dependencies
 6. Document expected inputs and outputs
 
+### Agent Permissions
+
+Agents can specify granular permissions in their frontmatter:
+
+**Edit permissions:**
+- `edit: allow` - Can edit files directly
+- `edit: ask` - Must ask before editing
+- `edit: deny` - Cannot edit files
+
+**Write permissions:**
+- `write: allow` - Can write files directly
+- `write: ask` - Must ask before writing
+- `write: deny` - Cannot write files
+
+**Bash permissions:**
+
+Bash permissions support pattern-based rules with specific command allowances:
+
+```yaml
+bash:
+  "exact command": allow      # Exact command allowed
+  "command*": allow           # Command with any arguments allowed
+  "another command*": deny    # Command explicitly denied
+  "*": ask                    # All other commands require permission
+```
+
+The pattern matching works as follows:
+- Exact strings match specific commands: `"git status": allow`
+- Wildcards (`*`) match arguments: `"git diff*": allow` matches `git diff`, `git diff --staged`, etc.
+- The catch-all `"*"` specifies the default behavior for unmatched commands
+- Rules are evaluated in order, first match wins
+- Each rule can have `allow`, `ask`, or `deny` as the permission level
+
+**WebFetch permissions:**
+- `webfetch: allow` - Can fetch web content
+- `webfetch: ask` - Must ask before fetching
+- `webfetch: deny` - Cannot fetch web content
+
 ## Working with Skills
 
 Skills are stored in the `skill/` directory. Each skill contains its own documentation and workflow instructions.
