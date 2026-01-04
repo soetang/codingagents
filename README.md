@@ -47,8 +47,7 @@ Custom commands for improved workflows:
 ## Getting Started
 
 1. Install OpenCode CLI
-2. Set up your project
-3. Use the CLI commands
+2. Copy the agents, skills, and commands to your relevant opencode directories
 
 For detailed instructions, see: [https://opencode.ai/](https://opencode.ai/)
 
