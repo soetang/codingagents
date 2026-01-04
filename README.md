@@ -1,12 +1,8 @@
 # Personal Project using OpenCode CLI
 
-A simple project using the OpenCode CLI for personal use.
+This is a personal project with commands, skills and agents for the OpenCode CLI. 
 
-## Overview
-
-This is a personal project that uses the OpenCode CLI to work with codebases. The agents is heavily inspired by the HumanLayer framework but adapted for personal use. However i migth add other approaches in the future.
-
-### Understanding the System
+### Core components
 
 **Agents** are specialized AI workflows stored as markdown files in the `agent/` directory. They define specific behaviors based on the task at hand. Whether agents operate autonomously depends on the tools and permissions available to them.
 
@@ -42,6 +38,12 @@ Skills are modular packages that provide specialized knowledge and workflows:
 
 Skills include their own documentation in `SKILL.md` files and may bundle scripts, references, and assets.
 
+## Commands
+
+Custom commands for improved workflows:
+
+- **note-improvement**: Capture agent/skill/command improvement suggestions and create GitHub issues
+
 ## Getting Started
 
 1. Install OpenCode CLI
@@ -58,32 +60,3 @@ This project is dual-licensed:
 - **HumanLayer-inspired Agent System**: Apache License 2.0 - see the [LICENSE-APACHE](LICENSE-APACHE) file
 - **Skills**: Licensed under MIT unless a specific LICENSE file exists in the skill's folder
 
-## Note
-
-This is a personal project inspired by HumanLayer agent architecture and not affiliated with OpenCode. The agent system design is heavily influenced by the HumanLayer framework but adapted for personal use with OpenCode CLI.
-
-## Future Ideas & TODO
-
-### Agent Enhancements
-- **Refactoring Agent**: A specialized agent for code refactoring with safety checks
-- **Task Description Agent**: Creates structured task descriptions for better organization
-- **Workflow Agent**: Handles git commits, CHANGELOG.md updates, and version management
-- **Release Agent**: Automates release processes including version bumping and tagging
-
-## Commands
-
-Custom commands for improved workflows:
-
-- **note-improvement**: Capture agent/skill/command improvement suggestions and create GitHub issues
-
-### Command Ideas
-- `/refactor "code pattern" "new pattern"` - Safe code refactoring
-- `/create-task "task description"` - Structured task creation
-- `/handle-workflow "commit message"` - Automated commit and version management
-- `/update-changelog "version" "changes"` - CHANGELOG.md updates
-
-### Workflow Improvements
-- **Automated Versioning**: Auto-detect version bumps based on commit types
-- **Change Tracking**: Automatic CHANGELOG.md generation from commits
-- **Release Automation**: Streamlined release process with safety checks
-- **Task Organization**: Better task management and prioritization
