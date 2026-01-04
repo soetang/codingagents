@@ -38,6 +38,7 @@ Skills are modular packages that provide specialized knowledge and workflows:
 
 - **skill_creator** (from Anthropic): Complete workflow for creating, validating, and packaging new skills
 - **agents-md-generator**: Generates `agents.md` files for repositories with development instructions and best practices
+- **spec-writer**: Guide for writing comprehensive software specifications, requirements, and feature designs
 
 Skills include their own documentation in `SKILL.md` files and may bundle scripts, references, and assets.
 
@@ -68,6 +69,12 @@ This is a personal project inspired by HumanLayer agent architecture and not aff
 - **Task Description Agent**: Creates structured task descriptions for better organization
 - **Workflow Agent**: Handles git commits, CHANGELOG.md updates, and version management
 - **Release Agent**: Automates release processes including version bumping and tagging
+
+## Commands
+
+Custom commands for improved workflows:
+
+- **note-improvement**: Capture agent/skill/command improvement suggestions and create GitHub issues
 
 ### Command Ideas
 - `/refactor "code pattern" "new pattern"` - Safe code refactoring
