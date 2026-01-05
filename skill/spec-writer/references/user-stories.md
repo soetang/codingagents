@@ -16,7 +16,7 @@ So that [benefit]
 
 ## Examples
 
-### Good Example
+### Good Example: Data Analysis
 ```
 As a data analyst
 I want to export query results to CSV
@@ -28,6 +28,43 @@ So that I can analyze the data in Excel
 As a user
 I want better reporting
 So that I can see data
+```
+
+### GenAI Infrastructure Examples
+
+#### Example 1: API Key Management
+```
+As a backend developer
+I want to generate API keys for my applications
+So that I can securely authenticate requests to the GenAI API
+```
+
+#### Example 2: Model Fine-tuning
+```
+As a data scientist
+I want to upload training data and fine-tune models
+So that I can create domain-specific AI models for my use case
+```
+
+#### Example 3: Prompt Template Management
+```
+As a product manager
+I want to version and test different prompt templates
+So that I can optimize AI responses without code changes
+```
+
+#### Example 4: Token Usage Tracking
+```
+As a team admin
+I want to monitor token usage across team members
+So that I can manage costs and set appropriate limits
+```
+
+#### Example 5: Model Deployment Pipeline
+```
+As an ML engineer
+I want to deploy trained models to production with rollback capability
+So that I can safely release new model versions
 ```
 
 ## Advanced Patterns

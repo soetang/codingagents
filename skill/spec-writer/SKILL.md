@@ -1,258 +1,345 @@
 ---
 name: spec-writer
-description: Guide for writing comprehensive software specifications, requirements, and feature designs. Use when users need to create detailed technical specifications, user stories, interface designs, or architectural patterns for software development projects.
+description: Guide for writing business requirements and user-focused specifications. Use when users need to clarify and document feature requirements before technical planning. Focuses on WHAT to build and WHY (user needs, business value) rather than HOW to implement (technical details). Output goes to thoughts/shared/specs/ for use in subsequent research and planning phases.
 license: Complete terms in LICENSE.txt
 ---
 
-# Spec Writer
+# Requirements Specification Writer
 
-You are tasked with creating comprehensive software specifications through an interactive, iterative process. You should be thorough, collaborative, and work with the user to produce high-quality technical specifications.
+You are tasked with creating clear, business-focused requirements specifications through a streamlined, interactive process. Your goal is to help users articulate WHAT they want to build and WHY, deferring technical implementation details to the planning phase.
+
+## Key Principles
+
+**This skill focuses on:**
+- ✅ Business and user requirements
+- ✅ User stories and value propositions
+- ✅ User flows and scenarios
+- ✅ Success criteria from user perspective
+- ✅ Functional requirements (high-level)
+
+**This skill does NOT focus on:**
+- ❌ Technical implementation details
+- ❌ Code architecture or design patterns
+- ❌ Database schemas or data models
+- ❌ API endpoint specifications
+- ❌ Deployment or infrastructure
 
 ## Initial Response
 
 When this skill is invoked:
 
-1. **Check if parameters were provided**:
-   - If a specification template or reference was provided, skip the default message
-   - Immediately analyze the provided content
-
-2. **If no parameters provided**, respond with:
+**Always start with:**
 ```
-I'll help you create a comprehensive software specification. Let me start by understanding what we're building.
+I'll help you create a clear requirements specification. Let me understand what we're building.
 
 Please provide:
-1. The feature/task description (or reference to existing documentation)
-2. Any relevant context, constraints, or specific requirements
-3. The desired level of detail: Brief, Standard, or Detailed
+1. A brief description of the feature or problem
+2. Who will use this feature
+3. What value it provides
 
-I'll analyze this information and work with you to create a structured specification.
+I'll guide you through a quick ~20 minute process to document requirements.
 ```
 
 Then wait for the user's input.
 
-## Process Steps
+## Process Steps (5 Steps, ~20 minutes)
 
-### Step 1: Requirements Gathering & Initial Analysis
+### Step 1: Problem & User Stories (5 min)
 
-1. **Analyze all provided information completely**:
-   - Feature descriptions
-   - Reference documents
-   - Related specifications
-   - **IMPORTANT**: Understand the complete context before proceeding
+**Objective:** Understand the problem and who benefits
 
-2. **Determine detail level**:
-   - **Brief**: High-level overview for quick planning or small features
-   - **Standard**: Comprehensive specification for typical features
-   - **Detailed**: In-depth specification for complex or critical systems
+**Ask these questions:**
+```
+Based on your description, let me clarify:
 
-3. **Ask focused questions** using prompts from [user-stories.md](references/user-stories.md):
-   ```
-   Based on the information provided, I understand we need to [accurate summary].
+1. "What specific problem are we solving?"
+2. "Who are the primary users of this feature?"
+3. "What value or benefit does this provide?"
+4. "Can you express the primary user story as: 'As a [role], I want [capability], so that [benefit]'?"
+5. "Are there secondary user stories we should consider?"
+```
 
-   I've identified that:
-   - [Key requirement or constraint]
-   - [Important pattern or consideration]
-   - [Potential complexity or edge case]
+**What to capture:**
+- Clear problem statement
+- Primary user story in proper format
+- 1-2 secondary user stories if applicable
+- Business value / why this matters
 
-   Questions to clarify:
-   - "What problem are we trying to solve?"
-   - "Who are the main users of this feature?"
-   - "What are the key benefits this feature will provide?"
-   - "Can you provide the primary user story in the format: 'As a [role], I want [feature] so that [benefit]'?"
-   ```
+**Output:** Problem statement + 1-3 user stories
 
-   Only ask questions that you genuinely cannot answer through analysis.
+---
 
-### Step 2: Acceptance Criteria Definition
+### Step 2: Requirements (5 min)
 
-After getting initial clarifications:
+**Objective:** Define what the system must do
 
-1. **Ask focused questions**:
-   ```
-   - "What must be true for this feature to be considered complete?"
-   - "What are the minimum viable requirements?"
-   - "Are there any specific performance targets?"
-   - "What constraints or limitations should we consider?"
-   ```
+**Ask these questions:**
+```
+Now let's define the requirements:
 
-2. **Adjust depth based on detail level**:
-   - Brief: 3-5 key acceptance criteria
-   - Standard: 5-10 comprehensive criteria with metrics
-   - Detailed: 10+ criteria including edge cases, performance targets, and validation rules
+**Core Capabilities:**
+- "What are the main things the system must do?"
+- "What actions must users be able to perform?"
+- "Are there any data or content requirements?"
 
-### Step 3: Technical Specification Development
+**Performance:**
+- "Are there any speed or performance requirements?" (e.g., "response time < 500ms")
 
-1. **Ask technical questions**:
-   ```
-   - "What are the core functional requirements?"
-   - "What non-functional requirements (performance, security, scalability) should we consider?"
-   - "What data structures or models are needed?"
-   - "What API endpoints or interfaces are required?"
-   - "What error conditions should we handle?"
-   - "What edge cases might occur?"
-   ```
+**Security:**
+- "What security requirements should we consider?" (auth, data protection, etc.)
 
-2. **Reference patterns** from [technical-specs.md](references/technical-specs.md) for structure
+**Scalability:**
+- "What volume or scale must this support?" (concurrent users, requests/second, data size)
 
-### Step 4: Interface & Pattern Design
+**Constraints:**
+- "Are there any constraints or limitations?" (technology, budget, timeline, regulations)
+```
 
-1. **Explore design options**:
-   ```
-   Based on my analysis, here are potential design approaches:
+**What to capture:**
+- 5-10 core functional requirements (what system must do)
+- Performance targets (if applicable)
+- Security requirements (if applicable)
+- Scalability needs (if applicable)
+- Constraints and assumptions
 
-   **Design Options:**
-   1. [Option A using Pattern X] - [pros/cons]
-   2. [Option B using Pattern Y] - [pros/cons]
+**Output:** Functional requirements + non-functional requirements + constraints
 
-   Which approach aligns best with your vision?
-   ```
+---
 
-2. **Ask interface questions** using guidance from [interface-design.md](references/interface-design.md):
-   ```
-   - "What design pattern would be most appropriate for this feature?"
-   - "What are the key interfaces or abstract classes needed?"
-   - "What methods should each interface include?"
-   - "What parameters and return types are needed?"
-   - "What exceptions might be raised?"
-   ```
+### Step 3: User Flows (5 min)
 
-3. **Reference patterns** from [design-patterns.md](references/design-patterns.md) for examples
+**Objective:** Map the user journey from their perspective
 
-### Step 5: Test Scenarios & Verification
+**Ask these questions:**
+```
+Let's walk through how users will interact with this:
 
-1. **Ask testing questions**:
-   ```
-   - "What are the happy path scenarios for this feature?"
-   - "What error conditions should we test?"
-   - "What performance metrics are important?"
-   - "What integration points need testing?"
-   - "What are the expected results for each scenario?"
-   ```
+**Happy Path:**
+- "Walk me through the primary use case step by step from the user's perspective"
+- "What does the user see/experience at each step?"
 
-2. **Adjust scope based on detail level**:
-   - Brief: 2-3 key test scenarios
-   - Standard: 5-10 test scenarios covering main paths and common errors
-   - Detailed: Comprehensive test matrix including all edge cases, performance tests, and integration scenarios
+**Error Scenarios:**
+- "What are the most common ways things could go wrong?"
+- "What should users see when errors occur?"
+- "How can users recover from errors?"
 
-### Step 6: Specification Structure Development
+**Edge Cases:**
+- "What unusual situations might occur?" (no data, missing permissions, etc.)
+- "How should the system handle these edge cases?"
+```
 
-Once aligned on content:
+Use guidance from [user-flows.md](references/user-flows.md) for structure and examples.
 
-1. **Create specification outline**:
-   ```
-   Here's my proposed specification structure based on [detail level]:
+**What to capture:**
+- Happy path: User action → System response → User sees/experiences (3-5 steps)
+- Error scenarios: 2-3 common error cases with user-friendly handling
+- Edge cases: 2-4 unusual situations from user perspective
 
-   ## 1. Overview
-   [Purpose and user stories]
+**Output:** Complete user flows (happy path, errors, edge cases)
 
-   ## 2. Acceptance Criteria
-   [What must be true for completion]
+---
 
-   ## 3. Technical Specification
-   [Functional and non-functional requirements]
+### Step 4: Testing & Scope (3 min)
 
-   ## 4. Interface Design
-   [Patterns and interfaces]
+**Objective:** Define verification approach and boundaries
 
-   ## 5. Test Scenarios
-   [Verification approach]
+**Ask these questions:**
+```
+Let's define how we'll verify this works and what's out of scope:
 
-   Does this structure meet your needs? Should I adjust any sections?
-   ```
+**Testing:**
+- "How will we test the happy path from a user perspective?"
+- "What error conditions should we test?"
+- "Any specific edge cases we must test?"
 
-2. **Get feedback on structure** before writing details
+**Scope Boundaries:**
+- "Are there related features or enhancements we're explicitly NOT including?"
+- "What should we defer to a future version?"
+- "What's the minimum viable version of this feature?"
+```
 
-### Step 7: Detailed Specification Writing
+**What to capture:**
+- 3-5 test scenarios from user perspective
+- 3-5 out-of-scope items (be explicit about what we're NOT doing)
+- Any open questions that need resolution
 
-After structure approval:
+**Output:** Test scenarios + out of scope items + open questions
 
-1. **Write the specification** following the template from [comprehensive-spec-template.md](references/comprehensive-spec-template.md)
-2. **Maintain consistent depth** throughout all sections based on chosen detail level
-3. **Include specific examples** and concrete patterns
+---
 
-### Step 8: Review and Iteration
+### Step 5: Write Requirements Document (2 min)
 
-1. **Present the draft specification**:
-   ```
-   I've created the specification following the [detail level] approach.
+**Objective:** Generate the requirements specification
 
-   Please review it and let me know:
-   - Are the sections properly scoped for the chosen detail level?
-   - Are the requirements specific enough?
-   - Any technical details that need adjustment?
-   - Missing edge cases or considerations?
-   ```
+**Process:**
+1. Compile all gathered information
+2. Structure using template from [comprehensive-spec-template.md](references/comprehensive-spec-template.md)
+3. Write to: `thoughts/shared/specs/YYYY-MM-DD-description.md`
+   - Format: `YYYY-MM-DD-description.md` where:
+     - YYYY-MM-DD is today's date
+     - description is a brief kebab-case description
+   - Examples:
+     - `2025-01-05-api-key-management.md`
+     - `2025-01-05-model-training-pipeline.md`
+4. Present summary and location to user
 
-2. **Iterate based on feedback** - be ready to:
-   - Add missing sections
-   - Adjust technical approach
-   - Clarify requirements
-   - Add/remove detail as needed
+**Document Structure:**
+```markdown
+# [Feature Name] Requirements
 
-3. **Continue refining** until the user is satisfied
+**Date**: YYYY-MM-DD
+**Author**: [User's name]
+**Status**: Draft
 
-4. **Optionally validate** using the validation script:
-   ```bash
-   python3 scripts/validate_spec.py comprehensive your_specification.md
-   ```
+## 1. Overview
+- Problem Statement
+- User Stories
+- Success Criteria
+
+## 2. Functional Requirements
+- Core Requirements
+- Non-Functional Requirements
+- Constraints & Assumptions
+
+## 3. User Flows
+- Happy Path
+- Error Scenarios
+- Edge Cases
+
+## 4. Test Scenarios
+- Happy path testing
+- Error condition testing
+- Edge case testing
+
+## 5. Out of Scope
+
+## 6. Open Questions
+
+## 7. References
+```
+
+**After writing:**
+```
+I've created your requirements specification at:
+`thoughts/shared/specs/YYYY-MM-DD-description.md`
+
+Please review:
+- Does the problem statement capture the core issue?
+- Are the user stories complete?
+- Are requirements specific enough?
+- Do the user flows make sense?
+- Is the scope clear?
+
+Let me know if you'd like to refine any section.
+```
+
+---
 
 ## Important Guidelines
 
-### Be Interactive
-- **MUST NOT** write the full specification in one shot
-- **MUST** get buy-in at each major step
-- **SHOULD** allow course corrections
-- **MUST** work collaboratively
+### Stay Business-Focused
+- **MUST** focus on user needs and business value
+- **MUST** use user-centric language (not developer jargon)
+- **MUST NOT** include technical implementation details
+- **SHOULD** defer architecture decisions to planning phase
 
-### Follow Detail Level Consistently
-- **MUST** maintain appropriate depth throughout all sections
-- **MUST NOT** include Detailed-level content in a Brief specification
-- **MUST** ensure all sections match the chosen detail level
-
-### Be Thorough
-- **MUST** analyze all context completely before planning
-- **SHOULD** include specific examples and patterns
-- **MUST** write measurable requirements
-- **SHOULD** consider edge cases appropriate for the detail level
-
-### Be Practical
-- **MUST** focus on actionable requirements
-- **SHOULD** consider implementation feasibility
-- **MUST** think about edge cases appropriate for the scope
-- **SHOULD** include "what we're NOT doing" for clarity
-
-### Be Specific
+### Be Specific and Measurable
+- **MUST** use concrete, measurable criteria (e.g., "< 500ms" not "fast")
 - **MUST** avoid vague requirements
-- **MUST** specify exact behaviors and constraints
-- **SHOULD** provide concrete examples to illustrate requirements
-- **MUST** document rationale for design decisions
+- **SHOULD** include specific examples to clarify requirements
+- **MUST** make success criteria testable
 
-### Pattern Usage
-- **SHOULD** use established design patterns when appropriate
-- **MUST** document rationale for pattern selection
-- **MAY** suggest alternative patterns when requested by user
-- **MUST NOT** make architectural decisions without user confirmation
+### Be Interactive and Efficient
+- **MUST** guide users through the 5-step process
+- **SHOULD** complete in ~20 minutes
+- **MUST** get user confirmation at each major step
+- **SHOULD** allow course corrections
+- **MUST NOT** write the full spec without gathering all information first
+
+### Think About Users
+- **MUST** write from user's perspective
+- **SHOULD** include error scenarios and edge cases
+- **MUST** focus on user experience, not system internals
+- **SHOULD** use "User does X → System responds Y → User sees Z" format
+
+### Set Clear Boundaries
+- **MUST** explicitly list what's out of scope
+- **SHOULD** identify constraints and assumptions
+- **MUST** resolve open questions before finalizing
+- **SHOULD** help prevent scope creep
 
 ## Reference Documents
 
-- [user-stories.md](references/user-stories.md) - User story templates and question prompts
-- [technical-specs.md](references/technical-specs.md) - Technical specification patterns
-- [design-patterns.md](references/design-patterns.md) - Common design patterns with examples
-- [interface-design.md](references/interface-design.md) - Interface design principles
-- [comprehensive-spec-template.md](references/comprehensive-spec-template.md) - Complete specification template with example
-- [interactive-workflow.md](references/interactive-workflow.md) - Detailed interactive workflow guide
+- [user-stories.md](references/user-stories.md) - User story templates and examples (including genAI infrastructure)
+- [functional-requirements.md](references/functional-requirements.md) - Guide for writing functional requirements
+- [user-flows.md](references/user-flows.md) - Guide for documenting user flows
+- [comprehensive-spec-template.md](references/comprehensive-spec-template.md) - Complete requirements template with example
+- [interactive-workflow.md](references/interactive-workflow.md) - Detailed workflow guide with prompts
 
 ## Validation
 
-Use the validation script to check specifications:
+After writing, optionally validate the specification:
 
 ```bash
-python3 scripts/validate_spec.py comprehensive your_specification.md
+python3 scripts/validate_spec.py requirements thoughts/shared/specs/YYYY-MM-DD-description.md
 ```
 
 The validator checks for:
 - Complete section structure
 - Proper user story format
-- Code examples and interface definitions
-- Test scenario coverage
-- Acceptance criteria completeness
+- User flows with arrows and steps
+- Core and non-functional requirements
+- Test scenarios
+- Out of scope section
+
+## Integration with Planning
+
+The requirements specification feeds into subsequent phases:
+
+1. **Requirements** (this skill) → Documents WHAT and WHY
+2. **Research** (research agent) → Understands current codebase state
+3. **Planning** (create-plan agent) → Defines HOW to implement
+4. **Implementation** → Builds the feature
+
+Your job is to create a clear, complete requirements document that gives the research and planning phases everything they need to succeed.
+
+## Tips for Success
+
+### DO:
+- ✅ Ask focused questions one at a time
+- ✅ Use concrete examples to clarify abstract concepts
+- ✅ Think about errors and edge cases early
+- ✅ Set clear scope boundaries
+- ✅ Write from the user's perspective
+- ✅ Make requirements measurable
+
+### DON'T:
+- ❌ Include database schemas or data models
+- ❌ Specify design patterns or architecture
+- ❌ Write API endpoint definitions
+- ❌ Include implementation details
+- ❌ Skip error scenarios
+- ❌ Use vague terms like "fast" or "scalable" without metrics
+
+## Common Question Patterns
+
+### For GenAI Infrastructure Features:
+- "What type of AI model or capability is this for?" (generation, embedding, fine-tuning, etc.)
+- "What are the token/cost implications?"
+- "Are there rate limits or quotas to consider?"
+- "How will users monitor usage or performance?"
+- "What about model versioning or updates?"
+
+### For API Features:
+- "Who will consume this API?" (internal services, external developers, etc.)
+- "What authentication is required?"
+- "What are the rate limits?"
+- "What's the expected request volume?"
+- "How should errors be communicated to API consumers?"
+
+### For User-Facing Features:
+- "What devices/platforms must this support?" (web, mobile, desktop)
+- "Are there accessibility requirements?"
+- "What's the expected user skill level?"
+- "How will users discover this feature?"
+- "What analytics or tracking is needed?"

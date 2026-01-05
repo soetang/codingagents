@@ -1,199 +1,247 @@
-# Interactive Specification Workflow
+# Interactive Requirements Workflow
 
-## Quick Reference for LLM-Guided Specification Creation
+## Quick Reference for Streamlined Requirements Creation
 
 ### Workflow Overview
 
 ```
-START → Gather Requirements → Define Acceptance Criteria → Technical Specification → 
-Interface Design → Test Scenarios → Implementation Considerations → Validate → END
+START → Problem & User Stories → Requirements → User Flows → Testing & Scope → Write Requirements → END
 ```
+
+**Total Time: ~20 minutes**
 
 ### Step-by-Step Guide with Prompts
 
-#### 1. Gather Requirements
+#### Step 1: Problem & User Stories (5 min)
 
-**Objective:** Understand the problem and user needs
+**Objective:** Understand what we're building and why
 
 **LLM Prompts:**
 ```
 "What problem are we trying to solve?"
-"Who are the main users of this feature?"
-"What are the key benefits this feature will provide?"
-"Can you provide the primary user story?"
-"Are there any secondary user stories?"
+"Who will use this feature?"
+"What value does this provide?"
+"Can you give me the primary user story in: 'As a [role], I want [capability], so that [benefit]'?"
+"Are there secondary user stories we should consider?"
 ```
 
 **User Input Examples:**
-- Problem statement
-- User roles and personas
-- Feature benefits
-- User stories in "As a... I want... So that..." format
+- Problem: "Developers can't self-service API keys, have to contact support"
+- Users: "Backend developers integrating with our API"
+- Value: "Reduces support burden, faster developer onboarding"
+- Primary story: "As a developer, I want to create API keys, so that I can authenticate my apps"
 
-#### 2. Define Acceptance Criteria
+**Output:** Clear problem statement and 1-3 user stories
 
-**Objective:** Establish clear completion criteria
+---
+
+#### Step 2: Requirements (5 min)
+
+**Objective:** Define what the system must do
 
 **LLM Prompts:**
 ```
-"What must be true for this feature to be considered complete?"
-"What are the minimum viable requirements?"
-"Are there any specific performance targets?"
-"What constraints should we consider?"
-"What would make this feature fail acceptance?"
+"What are the core capabilities the system must have?"
+"What actions must users be able to perform?"
+"Are there any performance requirements?" (e.g., "< 500ms response")
+"What about security requirements?"
+"Any scalability needs?" (e.g., "Support 1000 concurrent users")
+"What constraints or limitations should we consider?"
 ```
 
 **User Input Examples:**
-- Functional completion criteria
-- Performance metrics (response times, throughput)
-- Quality standards
-- Constraints and limitations
+- Core: "Generate keys, view keys, revoke keys, label keys"
+- Performance: "Key validation under 50ms"
+- Security: "Keys hashed in database, rate limit failed attempts"
+- Scalability: "10,000 validations per second"
+- Constraints: "Must work with existing auth system"
 
-#### 3. Technical Specification
+**Output:** 5-10 functional requirements, 3-5 non-functional requirements
 
-**Objective:** Define detailed requirements
+---
+
+#### Step 3: User Flows (5 min)
+
+**Objective:** Map the user journey
 
 **LLM Prompts:**
 ```
-"What are the core functional requirements?"
-"What non-functional requirements should we consider?"
-  - "Performance targets?"
-  - "Security requirements?"
-  - "Scalability needs?"
-"What data structures are needed?"
-"What API endpoints are required?"
-"What error conditions should we handle?"
-"What edge cases might occur?"
+"Walk me through the happy path: what does the user do step by step?"
+"What does the user see at each step?"
+"What are the most common error scenarios?"
+"What error messages should users see?"
+"What edge cases might occur from the user's perspective?"
 ```
 
 **User Input Examples:**
-- Functional requirements list
-- Performance metrics (e.g., "<500ms response time")
-- Security requirements (e.g., "Role-based access control")
-- Data model definitions
-- API specifications
-- Error handling strategies
+- Happy path: "User clicks 'Create Key' → sees key with copy button → copies key → names it"
+- Error: "User uses revoked key → gets 401 error → creates new key"
+- Edge case: "User closes window before copying → key lost forever"
 
-#### 4. Interface Design
+**Output:** Happy path flow (3-5 steps), 2-3 error scenarios, 2-4 edge cases
 
-**Objective:** Create clean, maintainable interfaces
+---
 
-**LLM Prompts:**
-```
-"What design pattern would be most appropriate?"
-  - "Strategy for multiple algorithms?"
-  - "Factory for object creation?"
-  - "Observer for event handling?"
-"What are the key interfaces needed?"
-"What methods should each interface include?"
-"What parameters and return types are needed?"
-"What exceptions might be raised?"
-"Can you provide a code example of the interface?"
-```
+#### Step 4: Testing & Scope (3 min)
 
-**User Input Examples:**
-- Design pattern choice with rationale
-- Interface definitions with methods
-- Method signatures with types
-- Exception handling strategies
-- Code examples
-
-#### 5. Test Scenarios
-
-**Objective:** Ensure comprehensive test coverage
+**Objective:** Define how we'll verify success and what's excluded
 
 **LLM Prompts:**
 ```
-"What are the happy path scenarios?"
+"How will we test the happy path from a user perspective?"
 "What error conditions should we test?"
-"What performance metrics are important?"
-"What integration points need testing?"
-"What are the expected results for each scenario?"
-"Are there any edge cases we should specifically test?"
+"What edge cases need testing?"
+"Are there any features or enhancements we're explicitly NOT including?"
+"What should we defer to a future version?"
 ```
 
 **User Input Examples:**
-- Happy path test cases
-- Error condition scenarios
-- Performance test targets
-- Integration test scenarios
-- Expected outcomes for each test
+- Happy path test: "Create key, use it in API call, verify it works"
+- Error test: "Try using revoked key, verify it fails gracefully"
+- Out of scope: "Key rotation, fine-grained permissions, IP allowlisting"
 
-#### 6. Implementation Considerations
+**Output:** 3-5 test scenarios, 3-5 out-of-scope items
 
-**Objective:** Plan for successful implementation
+---
 
-**LLM Prompts:**
+#### Step 5: Write Requirements (2 min)
+
+**Objective:** Generate the requirements document
+
+**LLM Actions:**
 ```
-"What dependencies are required?"
-"What configuration options should be available?"
-"Are there any special deployment requirements?"
-"What monitoring metrics should we track?"
-"What logging should be implemented?"
-"What alert thresholds should we set?"
+1. Compile all gathered information
+2. Structure using the template from comprehensive-spec-template.md
+3. Write to: thoughts/shared/specs/YYYY-MM-DD-description.md
+4. Present summary to user
 ```
 
-**User Input Examples:**
-- Dependency list with versions
-- Configuration options
-- Deployment requirements
-- Monitoring metrics
-- Logging strategies
-- Alert thresholds
+**Document Structure:**
+```markdown
+# [Feature Name] Requirements
+
+## 1. Overview
+- Problem statement
+- User stories
+- Success criteria
+
+## 2. Functional Requirements
+- Core requirements
+- Non-functional requirements
+- Constraints & assumptions
+
+## 3. User Flows
+- Happy path
+- Error scenarios
+- Edge cases
+
+## 4. Test Scenarios
+- Happy path testing
+- Error condition testing
+- Edge case testing
+
+## 5. Out of Scope
+
+## 6. Open Questions
+
+## 7. References
+```
+
+**Output:** Complete requirements document at `thoughts/shared/specs/YYYY-MM-DD-description.md`
+
+---
 
 ### Validation and Iteration
 
-**Validation Command:**
-```bash
-python3 scripts/validate_spec.py comprehensive your_specification.md
+**After Writing:**
+```
+"I've created the requirements document at thoughts/shared/specs/[filename].md
+
+Please review:
+- Does the problem statement capture the core issue?
+- Are the user stories complete?
+- Are requirements specific enough?
+- Do the user flows make sense?
+- Is the scope clear?"
 ```
 
 **Iteration Prompts:**
 ```
-"The validation found missing sections. Let's fill those in."
-"Some requirements are vague. Can you provide more specifics?"
-"The test scenarios could be more comprehensive. What other cases should we consider?"
-"The interface definition needs more detail. What methods are essential?"
+"Let's refine the [section] - what needs adjustment?"
+"Are there any requirements we missed?"
+"Should we add more detail to the user flows?"
+"Are there edge cases we haven't considered?"
 ```
 
-### Tips for Effective Interactive Specification
+---
 
-1. **Ask Specific Questions:** Focus on one aspect at a time
-2. **Provide Examples:** Show templates and patterns
-3. **Validate Early:** Check completeness at each step
-4. **Iterate:** Allow going back to refine previous answers
-5. **Progressive Detail:** Start broad, then get specific
-6. **User-Friendly:** Explain technical concepts when needed
-7. **Complete Coverage:** Ensure all sections are addressed
+### Tips for Effective Requirements Gathering
+
+1. **Ask Specific Questions** - Focus on one aspect at a time
+2. **Use Examples** - Concrete scenarios clarify abstract requirements
+3. **Stay Business-Focused** - Defer implementation details to planning phase
+4. **Think About Users** - Every requirement should connect to user value
+5. **Be Concrete** - "< 500ms response" not "fast"
+6. **Include Errors** - Error scenarios are just as important as happy path
+7. **Set Boundaries** - Out of scope prevents scope creep
+8. **Iterate Quickly** - Get something written, then refine
 
 ### Common Pitfalls to Avoid
 
-- **Vague Requirements:** "Should be fast" → "Response time <500ms"
-- **Missing Edge Cases:** Consider error conditions and boundaries
-- **Incomplete Interfaces:** Define all necessary methods and parameters
-- **Poor Test Coverage:** Include happy path, errors, performance, integration
-- **Unclear Acceptance Criteria:** Make criteria measurable and testable
+- ❌ **Vague Requirements:** "Should be fast" → ✅ "Response time < 500ms"
+- ❌ **Technical Implementation:** "Use Redis cache" → ✅ "Key validation < 50ms"
+- ❌ **Missing Edge Cases:** Only happy path → ✅ Include errors and edge cases
+- ❌ **Scope Creep:** Everything in scope → ✅ Explicitly list what's out of scope
+- ❌ **No User Perspective:** System-focused → ✅ User-focused flows and language
 
-### Example Interactive Session Flow
+### Example: Quick Session Flow
 
 ```
-LLM: "Let's create a comprehensive specification. What problem are we solving?"
+LLM: "What problem are we solving?"
+User: "Need API key management for developers."
 
-User: "We need a payment processing system for our e-commerce platform."
+LLM: "Who will use this?"
+User: "Backend developers integrating with our API."
 
-LLM: "Great! Who are the main users of this payment system?"
+LLM: "Primary user story?"
+User: "As a developer, I want to create API keys, so that I can authenticate my apps."
 
-User: "Customers making purchases, finance team monitoring transactions, and support staff handling refunds."
+LLM: "Core requirements?"
+User: "Generate keys, view list, revoke keys, add labels."
 
-LLM: "Perfect. Let's start with the primary user story for customers:"
+LLM: "Performance needs?"
+User: "Key validation under 50ms, support 10k validations/sec."
 
-User: "As a customer, I want to complete my purchase securely so that I can receive my order."
+LLM: "Walk me through the happy path."
+User: "User clicks create, sees key, copies it, names it, uses in API."
 
-LLM: "Excellent! Now let's define acceptance criteria. What must be true for the payment system to be complete?"
+LLM: "Error scenarios?"
+User: "Revoked key returns 401, rate limiting for failed attempts."
 
-User: "Must support credit cards and PayPal, process payments in <2s, have <1% failure rate, and be PCI compliant."
+LLM: "What's out of scope?"
+User: "Key rotation, IP allowlisting, usage analytics."
 
-LLM: "Great metrics! Now let's dive into functional requirements..."
-
-...and so on through each section.
+LLM: "Great! I've captured everything. Writing requirements to thoughts/shared/specs/2025-01-05-api-key-management.md..."
 ```
+
+**Total: ~15-20 minutes** for a complete, actionable requirements document.
+
+---
+
+### Integration with Planning Phase
+
+Requirements document becomes input to implementation planning:
+
+**Requirements Phase (spec-writer):**
+- WHAT needs to be built
+- WHY we're building it
+- WHO will use it
+- WHAT success looks like
+
+**Planning Phase (create-plan):**
+- HOW to implement it
+- WHAT code changes are needed
+- WHAT testing is required
+- WHAT the phases are
+
+Clear requirements make planning faster and more accurate.

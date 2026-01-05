@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Specification validation tool
+Requirements specification validation tool
 
-Validates comprehensive specifications for completeness and consistency
+Validates requirements documents for completeness and consistency
 """
 
 import re
@@ -10,71 +10,109 @@ import sys
 from typing import Dict, List, Optional
 
 
-def validate_comprehensive_spec(spec: str) -> Dict[str, bool]:
-    """Validate comprehensive specification structure"""
+def validate_requirements_spec(spec: str) -> Dict[str, bool]:
+    """Validate requirements specification structure"""
     required_sections = [
         '## 1. Overview',
-        '### 1.1 Purpose',
+        '### 1.1 Problem Statement',
         '### 1.2 User Stories',
-        '### 1.3 Acceptance Criteria',
-        '## 2. Technical Specification',
-        '### 2.1 Functional Requirements',
+        '### 1.3 Success Criteria',
+        '## 2. Functional Requirements',
+        '### 2.1 Core Requirements',
         '### 2.2 Non-Functional Requirements',
-        '### 2.3 Data Model',
-        '### 2.4 API Specifications',
-        '### 2.5 Error Handling',
-        '### 2.6 Edge Cases',
-        '## 3. Interface Design',
-        '### 3.1 Design Pattern',
-        '### 3.2 Interface Definition',
+        '## 3. User Flows',
+        '### 3.1 Happy Path',
+        '### 3.2 Error Scenarios',
         '## 4. Test Scenarios',
-        '### 4.1 Happy Path Scenarios',
-        '### 4.2 Error Condition Scenarios',
-        '### 4.3 Performance Test Scenarios',
-        '### 4.4 Integration Test Scenarios',
-        '## 5. Implementation Considerations'
+        '## 5. Out of Scope',
     ]
     
     results = {}
     for section in required_sections:
-        results[section.lower().replace(' ', '_').replace('.', '')] = section in spec
+        section_key = section.lower().replace(' ', '_').replace('.', '').replace('#', '')
+        results[section_key] = section in spec
     
     # Additional validations
     results['has_user_story_format'] = 'As a' in spec and 'I want' in spec and 'So that' in spec
-    results['has_code_examples'] = '```' in spec
-    results['has_acceptance_criteria'] = '- ' in spec and '## 1. Overview' in spec
-    results['has_interface_definition'] = '@abstractmethod' in spec or 'interface' in spec.lower()
-    results['has_test_scenarios'] = '| Scenario' in spec or 'Steps' in spec
+    results['has_success_criteria'] = '- [ ]' in spec or '- [x]' in spec
+    results['has_user_flows'] = '→' in spec or '->' in spec
+    results['has_core_requirements'] = 'must' in spec.lower()
+    results['has_non_functional'] = ('Performance:' in spec or 'Security:' in spec or 
+                                      'Scalability:' in spec)
+    results['has_error_scenarios'] = 'error' in spec.lower() or 'invalid' in spec.lower()
+    results['has_out_of_scope'] = 'out of scope' in spec.lower() or 'not doing' in spec.lower()
+    results['has_test_scenarios'] = '| Scenario' in spec or 'Test' in spec
     
     return results
 
 
 def validate_user_story(story: str) -> Dict[str, bool]:
     """Validate user story format"""
-    pattern = r"As a\s+\w+.*\nI want\s+\w+.*\nSo that\s+\w+.*"
     return {
         'has_role': 'As a' in story,
         'has_feature': 'I want' in story,
         'has_benefit': 'So that' in story,
-        'valid_format': bool(re.match(pattern, story))
+        'complete_format': ('As a' in story and 'I want' in story and 'So that' in story)
     }
 
 
-def validate_interface_design(code: str) -> Dict[str, bool]:
-    """Validate interface design quality"""
+def validate_user_flows(flows: str) -> Dict[str, bool]:
+    """Validate user flows quality"""
     results = {
-        'has_type_hints': '->' in code or ': ' in code,
-        'has_docstrings': '"""' in code,
-        'has_abstract_methods': 'abstractmethod' in code,
-        'uses_solid_principles': True  # This would need more sophisticated analysis
+        'has_flow_arrows': '→' in flows or '->' in flows,
+        'has_user_actions': 'User' in flows or 'user' in flows,
+        'has_system_responses': 'System' in flows or 'system' in flows,
+        'has_error_scenarios': 'error' in flows.lower() or 'invalid' in flows.lower(),
+        'has_edge_cases': 'edge' in flows.lower() or 'what if' in flows.lower()
     }
     return results
+
+
+def print_results(results: Dict[str, bool], spec_type: str):
+    """Print validation results"""
+    print(f"\nValidation results for {spec_type} specification:\n")
+    
+    passed = []
+    failed = []
+    
+    for check, result in results.items():
+        status = "✓" if result else "✗"
+        check_name = check.replace('_', ' ').title()
+        
+        if result:
+            passed.append(f"  {status} {check_name}")
+        else:
+            failed.append(f"  {status} {check_name}")
+    
+    # Print passed checks
+    if passed:
+        print("Passed:")
+        for line in passed:
+            print(line)
+    
+    # Print failed checks
+    if failed:
+        print("\nFailed:")
+        for line in failed:
+            print(line)
+    
+    all_passed = all(results.values())
+    if all_passed:
+        print("\n✓ All checks passed!")
+        return 0
+    else:
+        print("\n✗ Some checks failed. Please review the specification.")
+        return 1
 
 
 def main():
     if len(sys.argv) < 3:
         print("Usage: validate_spec.py <spec_type> <file_path>")
-        print("  spec_type: comprehensive, user-story, interface-design")
+        print("  spec_type: requirements, user-story, user-flows")
+        print("\nExamples:")
+        print("  validate_spec.py requirements thoughts/shared/specs/my-spec.md")
+        print("  validate_spec.py user-story story.md")
+        print("  validate_spec.py user-flows flows.md")
         sys.exit(1)
     
     spec_type = sys.argv[1]
@@ -86,26 +124,16 @@ def main():
         
         if spec_type == 'user-story':
             results = validate_user_story(content)
-        elif spec_type == 'interface-design':
-            results = validate_interface_design(content)
-        elif spec_type == 'comprehensive':
-            results = validate_comprehensive_spec(content)
+        elif spec_type == 'user-flows':
+            results = validate_user_flows(content)
+        elif spec_type == 'requirements':
+            results = validate_requirements_spec(content)
         else:
             print(f"Unknown spec type: {spec_type}")
+            print("Valid types: requirements, user-story, user-flows")
             sys.exit(1)
         
-        print(f"Validation results for {file_path}:")
-        for check, passed in results.items():
-            status = "✓" if passed else "✗"
-            print(f"  {status} {check.replace('_', ' ').title()}")
-        
-        all_passed = all(results.values())
-        if all_passed:
-            print("\n✓ All checks passed!")
-            return 0
-        else:
-            print("\n✗ Some checks failed. Please review the specification.")
-            return 1
+        return print_results(results, spec_type)
             
     except FileNotFoundError:
         print(f"Error: File not found - {file_path}")
