@@ -32,7 +32,9 @@ The system includes two types of agents:
 
 Skills are modular packages that provide specialized knowledge and workflows:
 
-- **skill_creator** (from Anthropic): Complete workflow for creating, validating, and packaging new skills
+- **skill-creator** (from Anthropic): Complete workflow for creating, validating, and packaging new skills
+- **slack-gif-creator** (from Anthropic): Knowledge and utilities for creating animated GIFs optimized for Slack
+- **steal-skill**: Steal existing skills, commands, and agents from GitHub repositories
 - **agents-md-generator**: Generates `agents.md` files for repositories with development instructions and best practices
 - **spec-writer**: Helps write software specifications, requirements, and feature designs
 
