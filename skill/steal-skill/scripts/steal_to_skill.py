@@ -126,11 +126,13 @@ def find_all_skills(repo_dir: Path) -> list[tuple[Path, str]]:
     
     # Common skill directory patterns to search
     search_patterns = [
-        "skills/*/SKILL.md",       # Anthropics style: skills/skill-name/SKILL.md
-        "skill/*/SKILL.md",        # OpenCode style: skill/skill-name/SKILL.md
-        ".claude/skills/*/SKILL.md",  # Standard: .claude/skills/skill-name/SKILL.md
-        "*/SKILL.md",              # Direct subdirectories
-        "SKILL.md",                # Root level
+        "skills/*/SKILL.md",              # Claude Code / Codex style: skills/skill-name/SKILL.md
+        "skill/*/SKILL.md",               # OpenCode style: skill/skill-name/SKILL.md
+        ".claude/skills/*/SKILL.md",      # Claude Code repo-specific
+        ".codex/skills/*/SKILL.md",       # Codex repo-specific
+        ".opencode/skill/*/SKILL.md",     # OpenCode repo-specific
+        "*/SKILL.md",                     # Direct subdirectories
+        "SKILL.md",                       # Root level
     ]
     
     found_paths = set()  # Avoid duplicates

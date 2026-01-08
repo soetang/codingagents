@@ -61,10 +61,12 @@ def find_all_agents(repo_dir: Path) -> list[tuple[Path, str]]:
     
     # Common agent directory patterns to search
     search_patterns = [
-        "agents/*.md",          # Standard: agents/
-        "agent/*.md",           # OpenCode style: agent/
-        ".claude/agents/*.md",  # Standard: .claude/agents/
-        "*.md",                 # Root level .md files
+        "agents/*.md",             # Claude Code / Codex style: agents/
+        "agent/*.md",              # OpenCode style: agent/
+        ".claude/agents/*.md",     # Claude Code repo-specific
+        ".codex/agents/*.md",      # Codex repo-specific
+        ".opencode/agent/*.md",    # OpenCode repo-specific
+        "*.md",                    # Root level .md files
     ]
     
     found_paths = set()  # Avoid duplicates

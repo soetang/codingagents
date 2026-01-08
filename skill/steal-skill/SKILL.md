@@ -19,6 +19,8 @@ This tool **only steals existing resources** - it does not convert arbitrary rep
 
 If you point to a wrong location, the tool will list available resources it found in the repository.
 
+**📚 Tool Path Reference**: Different AI coding tools use different directory structures. See [references/TOOL_PATHS_REFERENCE.md](references/TOOL_PATHS_REFERENCE.md) for details on OpenCode, Codex, and Claude Code conventions.
+
 ## When to Use
 
 Use this skill when:

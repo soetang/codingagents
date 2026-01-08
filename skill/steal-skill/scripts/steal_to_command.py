@@ -61,10 +61,12 @@ def find_all_commands(repo_dir: Path) -> list[tuple[Path, str]]:
     
     # Common command directory patterns to search
     search_patterns = [
-        "commands/*.md",          # Standard: commands/
-        "command/*.md",           # OpenCode style: command/
-        ".claude/commands/*.md",  # Standard: .claude/commands/
-        "*.md",                   # Root level .md files
+        "commands/*.md",             # Claude Code / Codex style: commands/
+        "command/*.md",              # OpenCode style: command/
+        ".claude/commands/*.md",     # Claude Code repo-specific
+        ".codex/commands/*.md",      # Codex repo-specific
+        ".opencode/command/*.md",    # OpenCode repo-specific
+        "*.md",                      # Root level .md files
     ]
     
     found_paths = set()  # Avoid duplicates
