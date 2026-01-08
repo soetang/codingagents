@@ -3,3 +3,6 @@ package.json
 bun.lock
 __pycache__/
 *.pyc
+
+# Personal blog-writer skill
+skill/blog-writer/
