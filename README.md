@@ -30,6 +30,9 @@ Commands and sub-agents adapted from: https://github.com/humanlayer/humanlayer/t
 - **thoughts-locator**: Discovers relevant documents in the thoughts directory
 - **thoughts-analyzer**: Extracts key insights from thought documents
 
+### Additional Sub-Agents
+- **code-simplifier**: Simplifies and refines code for clarity and maintainability (sourced from `.claude` resources)
+
 ## Skills
 
 Skills are modular packages that provide specialized knowledge and workflows:

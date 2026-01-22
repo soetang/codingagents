@@ -271,6 +271,10 @@ After structure approval:
 - Original ticket: `thoughts/allison/tickets/eng_XXXX.md`
 - Related research: `thoughts/shared/research/[relevant].md`
 - Similar implementation: `[file:line]`
+
+## Post-Implementation Review
+
+After implementation, run the `code-simplifier` subagent to suggest clarity and maintainability improvements.
 ````
 
 ### Step 5: Sync and Review

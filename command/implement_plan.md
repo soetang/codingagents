@@ -66,6 +66,8 @@ If instructed to execute multiple phases consecutively, skip the pause until the
 
 do not check off items in the manual testing steps until confirmed by the user.
 
+After completing all plan phases, run the `code-simplifier` subagent on the newly modified code and incorporate any approved refinements.
+
 
 ## If You Get Stuck
 
