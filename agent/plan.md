@@ -8,5 +8,6 @@ permission:
     "git status": allow
     "git diff*": allow
     "git log*": allow
+    "git branch --show-current": allow
     "*": ask
 ---

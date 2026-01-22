@@ -17,9 +17,8 @@ Agents/commands from: https://github.com/humanlayer/humanlayer/tree/main/.claude
 The system includes two types of agents:
 
 ### Primary Agents
-- **research**: Conducts comprehensive research across codebases
-- **create-plan**: Creates implementation plans based on existing patterns
-- **implement_plan**: Implements plans by writing code and updating files
+- **plan**: Creates and manages implementation plans
+- **build**: Handles build, test, and development workflows
 
 ### Sub-Agents
 - **codebase-locator**: Locates files and components relevant to tasks
@@ -44,6 +43,9 @@ Skills include their own documentation in `SKILL.md` files and may bundle script
 
 Custom commands for improved workflows:
 
+- **create-plan**: Create implementation plans via the plan agent
+- **research**: Document codebase as-is via the plan agent
+- **implement_plan**: Implement plans via the build agent
 - **note-improvement**: Capture agent/skill/command improvement suggestions and create GitHub issues
 
 ## Getting Started
@@ -61,4 +63,3 @@ This project is dual-licensed:
 - **Overall Project**: MIT License - see the [LICENSE](LICENSE) file for details
 - **HumanLayer-inspired Agent System**: Apache License 2.0 - see the [LICENSE-APACHE](LICENSE-APACHE) file
 - **Skills**: Licensed under MIT unless a specific LICENSE file exists in the skill's folder
-

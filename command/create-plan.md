@@ -1,11 +1,7 @@
 ---
-# Heavily inspired by the research agent from HumanLayer, modified for OpenCode's context and needs.
 description: Document codebase as-is with thoughts directory for historical context
-mode: "primary"
-permission:
-  edit: ask
-  write: ask  
-  bash: deny
+agent: plan
+subtask: false
 ---
 
 # Implementation Plan
