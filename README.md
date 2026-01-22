@@ -10,15 +10,18 @@ This is a personal project with commands, skills and agents for the OpenCode CLI
 
 **Skills** are packaged bundles of instructions, scripts, references, and assets stored in the `skill/` directory. Skills extend OpenCode's capabilities by providing domain-specific knowledge, workflows, and tools. Think of them as "onboarding guides" that transform OpenCode into a specialist for particular tasks.
 
-## Humanlayer agents:
+## Core agents
 
-Agents/commands from: https://github.com/humanlayer/humanlayer/tree/main/.claude
+OpenCode ships with built-in `plan` and `build` agents. They are defaults in the CLI and are not derived from HumanLayer.
 
-The system includes two types of agents:
+## HumanLayer-based commands and sub-agents
 
-### Primary Agents
-- **plan**: Creates and manages implementation plans
-- **build**: Handles build, test, and development workflows
+Commands and sub-agents adapted from: https://github.com/humanlayer/humanlayer/tree/main/.claude
+
+### Commands
+- **create-plan**: Guides interactive implementation planning and produces structured plan documents
+- **research**: Documents the codebase as-is by orchestrating parallel research agents
+- **implement_plan**: Implements approved plans with phased verification and checklist updates
 
 ### Sub-Agents
 - **codebase-locator**: Locates files and components relevant to tasks
