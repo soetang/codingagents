@@ -43,6 +43,7 @@ Skills are modular packages that provide specialized knowledge and workflows:
 - **steal-skill**: Steal existing skills, commands, and agents from GitHub repositories
 - **agents-md-generator**: Generates `agents.md` files for repositories with development instructions and best practices
 - **spec-writer**: Helps write software specifications, requirements, and feature designs
+- **python-programming** (testing): Python coding standards and workflow guidance with Google-style docstrings
 
 Skills include their own documentation in `SKILL.md` files and may bundle scripts, references, and assets.
 
