@@ -6,5 +6,10 @@
             "npm": "@ai-sdk/mistral",
             "name": "mistral"
         }
+    },
+    "agent": {
+        "plan": {
+        "disable": true
+        }
     }
 }

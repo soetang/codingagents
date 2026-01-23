@@ -3,7 +3,8 @@ description: Handles build, test, and development workflow tasks for repositorie
 mode: "primary"
 permission:
   edit: allow
-  write: allow  
+  write: allow
+  question: "allow"  
   bash:
     "git status": allow
     "git diff*": allow
