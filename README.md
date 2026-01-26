@@ -12,7 +12,7 @@ This is a personal project with commands, skills and agents for the OpenCode CLI
 
 ## Core agents
 
-OpenCode ships with built-in `plan` and `build` agents. They are defaults in the CLI and are not derived from HumanLayer.
+OpenCode ships with built-in `plan` and `build` agents. This repo disables the built-in `plan` agent and uses the custom `planning` agent instead.
 
 ## HumanLayer-based commands and sub-agents
 
@@ -51,8 +51,8 @@ Skills include their own documentation in `SKILL.md` files and may bundle script
 
 Custom commands for improved workflows:
 
-- **create-plan**: Create implementation plans via the plan agent
-- **research**: Document codebase as-is via the plan agent
+- **create-plan**: Create implementation plans via the planning agent
+- **research**: Document codebase as-is via the planning agent
 - **implement_plan**: Implement plans via the build agent
 - **note-improvement**: Capture agent/skill/command improvement suggestions and create GitHub issues
 

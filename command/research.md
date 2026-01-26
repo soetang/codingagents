@@ -1,6 +1,6 @@
 ---
 description: Document codebase as-is with thoughts directory for historical context
-agent: plan
+agent: planning
 subtask: false
 ---
 

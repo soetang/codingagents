@@ -9,5 +9,7 @@ permission:
     "git status": allow
     "git diff*": allow
     "git log*": allow
+    "uv run pytest *": allow
+    "uv run ruff *": allow
     "*": ask
 ---

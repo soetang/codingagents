@@ -9,7 +9,7 @@
     },
     "agent": {
         "plan": {
-        "disable": true
+            "disable": true
         }
     }
 }
