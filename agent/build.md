@@ -11,5 +11,6 @@ permission:
     "git log*": allow
     "uv run pytest *": allow
     "uv run ruff *": allow
+    "uv run mypy *": allow
     "*": ask
 ---

@@ -302,6 +302,28 @@ After implementation, run the `code-simplifier` subagent to suggest clarity and 
 
 4. **Continue refining** until the user is satisfied
 
+### Step 6: Final Plan Review (Mandatory)
+
+After completing all planning phases and refinements, run the `plan-reviewer` subagent on the final plan, ticket, and relevant research documents.
+
+1. **Run an independent final review**:
+   - Provide `plan_path`
+   - Provide original ticket path when available
+   - Provide relevant research document paths when available
+
+2. **Handle unresolved decisions with the question tool**:
+   - If `plan-reviewer` surfaces unresolved decisions, ask the user via the **question tool**
+   - Use structured options when possible
+   - Only ask high-impact questions that materially affect implementation
+
+3. **Apply final revisions**:
+   - Update the plan based on user answers and reviewer findings
+   - If major changes were made, run `plan-reviewer` again
+
+4. **Finalize**:
+   - Finalize when verdict is `ready`
+   - Or when the user explicitly accepts remaining tradeoffs
+
 ## Important Guidelines
 
 1. **Be Skeptical**:
@@ -337,8 +359,14 @@ After implementation, run the `code-simplifier` subagent to suggest clarity and 
    - If you encounter open questions during planning, STOP
    - Research or ask for clarification immediately
    - Do NOT write the plan with unresolved questions
-   - The implementation plan must be complete and actionable
-   - Every decision must be made before finalizing the plan
+    - The implementation plan must be complete and actionable
+    - Every decision must be made before finalizing the plan
+
+7. **Mandatory final subagent pass**:
+   - Before final handoff, always run `plan-reviewer` as an independent QA check
+   - Include ticket and research context when available to validate requirement alignment
+   - If clarifications are needed, use the **question tool** for focused, actionable questions
+   - Surface only decisions that affect scope, sequencing, risk, or acceptance criteria
 
 ## Success Criteria Guidelines
 
