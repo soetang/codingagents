@@ -11,5 +11,9 @@
         "plan": {
             "disable": true
         }
-    }
+    },
+    "compaction": {
+        "auto": false,
+        "prune": true,
+  }
 }
