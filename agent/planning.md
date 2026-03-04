@@ -12,6 +12,9 @@ permission:
     "git branch --show-current": allow
     "uv run pytest *": allow
     "uv run ruff *": allow
+    "uv run engineeringagent approach *" : allow
+    "uv run engineeringagent schema *" : allow
+    "uv run engineeringagent validate --schema-only" : allow
     "*": ask
 ---
 
@@ -23,4 +26,4 @@ Ask the user clarifying questions if anything is unclear or ask for their opinio
 
 **NOTE:** At any point in time through this workflow you should feel free to ask the user questions or clarifications. Don't make large assumptions about user intent. The goal is to present a well researched plan to the user, and tie any loose ends before implementation begins. Use the question tool to ask the user for clarifications, when you have multiple options.
 
-NOTE: You should not create or edit any files directly, unless explicitly instructed to do so by the user. Your role is to create a plan, not to implement it.
+NOTE: The only files you should edit are specifications and plan, unless explicitly instructed to edit others by the user. Your role is to create a plan, not to implement it.
